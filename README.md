@@ -1,4 +1,4 @@
-# MedicalStore
+﻿# MedicalStore
 
 Medical Store Management System
 
@@ -121,7 +121,7 @@ This project uses EF Core migrations. To create or apply migrations, run:
 - Add migration: `dotnet ef migrations add YourMigrationName --project MedicalStore --startup-project MedicalStore`
 - Apply migrations: `dotnet ef database update --project MedicalStore --startup-project MedicalStore`
 
-If you prefer to let the app manage the database, ensure your connection string points to an available SQL Server and run the application � then apply migrations as needed.
+If you prefer to let the app manage the database, ensure your connection string points to an available SQL Server and run the application — then apply migrations as needed.
 
 ## Default admin (development only)
 
