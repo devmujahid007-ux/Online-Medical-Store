@@ -140,12 +140,6 @@ From the solution directory:
 
 Then open the URL shown in the console (typically `https://localhost:5001` or similar).
 
-## Tests
-
-(No automated tests included in this repository.)
-
-## Contributing
-
 - Fork the repo, create a feature branch, and open a PR.
 - For security, do not commit secrets (connection strings, SMTP passwords). Use user secrets or environment variables.
 
