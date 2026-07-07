@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MedicalStore.Models.Client>
+
+<h2>Client Report</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Client Name</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var client in Model)
+        {
+            <tr>
+                <td>@client.ClientName</td>
+                <td>@client.Gender</td>
+                <td>@client.Address</td>
+                <td>@client.City</td>
+            </tr>
+        }
+    </tbody>
+</table>

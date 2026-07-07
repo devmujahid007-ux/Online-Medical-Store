@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Medical Store Web Services";
+    var username = Context.Session.GetString("Username");
+}
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h3>Prototype</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white p-3 rounded">
+            <h4>Medicines In Stock</h4>
+            <p>@ViewBag.TotalStock</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white p-3 rounded">
+            <h4>Total Sales (Rs.)</h4>
+            <p>@ViewBag.TotalSales</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-white p-3 rounded">
+            <h4>Total Clients</h4>
+            <p>@ViewBag.TotalClients</p>
+        </div>
+    </div>
+</div>
+
+<canvas id="salesChart" height="100"></canvas>
+
+
+
+<div class="text-center">
+    <h1>Medical Store Web Services</h1>
+
+    <p>This software helps manage inventory, sales, purchases, reports, suppliers, and billing in a medical store environment.</p>
+
+    @if (string.IsNullOrEmpty(username))
+    {
+        <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Login</a>
+    }
+    else
+    {
+        <p>Hello, <strong>@username</strong>!</p>
+        <a class="btn btn-danger" asp-controller="Account" asp-action="Logout">Logout</a>
+    }
+</div>
+
+<h4>Monthly Sales Chart</h4>
+<canvas id="salesChart" width="400" height="150"></canvas>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(ViewBag.SalesLabelsJson),
+                datasets: [{
+                    label: 'Monthly Sales (Rs.)',
+                    data: @Html.Raw(ViewBag.SalesDataJson),
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)'
+                }]
+            }
+        });
+    </script>
+}
+

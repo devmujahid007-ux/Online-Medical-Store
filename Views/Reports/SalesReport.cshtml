@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MedicalStore.Models.SellOrder>
+
+
+@{
+    ViewData["Title"] = "Sales Report";
+}
+
+<h2 class="mb-4">Sales Report</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Client Name</th>
+            <th>Date</th>
+            <th>Total Items</th>
+            <th>Total Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.Client?.ClientName</td>
+                <td>@order.OrderDate.ToShortDateString()</td>
+                <td>@order.Items?.Count()</td>
+                <td>
+                    @{
+                        var totalPrice = order.Items?.Sum(i => i.Price * i.Quantity) ?? 0;
+                        @totalPrice.ToString("C");
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,20 @@
+﻿@model MedicalStore.Models.Stock
+@{
+    ViewData["Title"] = "Delete Stock";
+}
+
+<h2>Delete Stock</h2>
+
+<h3>Are you sure you want to delete this stock?</h3>
+<div>
+    <h4>@Model.MedicineName</h4>
+    <p>Quantity: @Model.Quantity</p>
+    <p>Price: @Model.Price.ToString("C")</p>
+    <p>Expiry Date: @Model.ExpiryDate.ToShortDateString()</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MedicalStore.Models.Stock>
+
+<h2>Stock Report</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Medicine Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Expiry Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stock in Model)
+        {
+            <tr>
+                <td>@stock.MedicineName</td>
+                <td>@stock.Quantity</td>
+                <td>@stock.Price.ToString("C")</td>
+                <td>@stock.ExpiryDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

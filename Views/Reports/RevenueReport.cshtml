@@ -1,0 +1,21 @@
+﻿@model IEnumerable<MedicalStore.Models.ViewModels.RevenueReportViewModel>
+
+<h2>Revenue Report</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Order Date</th>
+            <th>Total Revenue</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderDate.ToShortDateString()</td>
+                <td>@item.TotalRevenue.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
